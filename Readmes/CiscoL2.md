@@ -1,4 +1,3 @@
-# NOTA: Manca la Gi2/2 nella configurazione!!
 # Cisco L2 Configuration
 <h4> This guide describes how to create and configure the **Cisco L2** switch (level 2 switch to connect all the VLANs). </h4>
 
@@ -136,6 +135,27 @@
     switchport access vlan 70
     switchport mode access
     description DC
+    no shutdown
+    exit
+
+    interface GigabitEthernet2/2
+    description IDS
+    shutdown
+    exit
+
+    monitor session 1 source interface GigabitEthernet0/0 both
+    monitor session 1 source interface GigabitEthernet0/1 both
+    monitor session 1 source interface GigabitEthernet0/2 both
+    monitor session 1 source interface GigabitEthernet0/3 both
+    monitor session 1 source interface GigabitEthernet1/0 both
+    monitor session 1 source interface GigabitEthernet1/1 both
+    monitor session 1 source interface GigabitEthernet1/2 both
+    monitor session 1 source interface GigabitEthernet1/3 both
+    monitor session 1 source interface GigabitEthernet2/0 both
+    monitor session 1 source interface GigabitEthernet2/1 both
+    monitor session 1 destination interface GigabitEthernet2/2
+
+    interface GigabitEthernet2/2
     no shutdown
     exit
 
