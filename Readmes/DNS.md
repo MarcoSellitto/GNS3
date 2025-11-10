@@ -1,4 +1,4 @@
-# WebServer (Apache2) Configuration in the DMZ
+# DNS Configuration in the DMZ
 <h4> This guide describes how to create and configure the **DNS** in the DMZ. </h4>
 
 ## Step 1: Container Installation, Placement, and Configuration
@@ -6,7 +6,7 @@
     <li>Add Container
         <ol>
             <li>In GNS3, instantiate the container by going to Edit → Preferences → Docker Containers → New → choose where to run the container → enter the image adosztal/dns:latest → choose a name and follow the on-screen instructions.</li>
-            <li>Drag the container into the GNS3 project and connect it to the switch in the DMZ subnet
+            <li>Drag the container into the GNS3 project and connect it to the switch in the DMZ subnet.</li>
         </ol>
     </li>
     <li>Start and open the container's console.</li>

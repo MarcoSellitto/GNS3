@@ -6,7 +6,7 @@
     <li>Add Container
         <ol>
             <li>In GNS3, instantiate the container by going to Edit → Preferences → Qemu VMs → New → choose where to run the container → enter the image debian-12.6.qcow2 → choose a name and follow the on-screen instructions.</li>
-            <li>Drag the container into the GNS3 project and connect it to the switch in the DMZ subnet
+            <li>Drag the container into the GNS3 project and connect it to the switch in the DMZ subnet.</li>
         </ol>
     </li>
     <li>Start and open the container's console.</li>
