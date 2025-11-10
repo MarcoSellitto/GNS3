@@ -5,7 +5,7 @@
 <ol>
     <li>Add Container
         <ol>
-            <li>In GNS3, instantiate the container by clicking on the Switches tab on the left → New Template → choose where to run the container → Switches → Cisco IOSvL2 → Install → choose where to run the container → IOSvL2 version 15.2(20200924:215240) → vios_l2-adventerprisek9-m.ssa.high_iron_20200929.qcow2 → Next → follow the on-screen instructions.</li>
+            <li>In GNS3, instantiate the container by clicking on the Switches tab on the left → New Template → Install from the GNS3 server (recommended) → Switches → Cisco IOSvL2 → Install → choose where to run the container → IOSvL2 version 15.2(20200924:215240) → vios_l2-adventerprisek9-m.ssa.high_iron_20200929.qcow2 → Next → follow the on-screen instructions.</li>
             <li>Drag the container into the GNS3 project
                 <ol>
                     <li>Connect "Gi0/0" port to the OpnSense's "em1" port.</li>
