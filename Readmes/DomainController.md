@@ -75,7 +75,7 @@ Click Ok → Restart the machine. </li>
 </li>
 
 ## Step 7: WebServer Certificate Creation
-The commands in this step must be executed on the Debian machine hosting the web server. The machine must remain active during step 8 as the certificate will be generated within the /tmp directory of the Linux environment.
+The commands in this step must be executed on the Debian machine hosting the webserver. The machine must remain active during step 8 as the certificate will be generated within the /tmp directory of the Linux environment.
 <li>Create a temporary file</li>
 
 ``` shell
@@ -109,7 +109,7 @@ The commands in this step must be executed on the Debian machine hosting the web
     IP.2  = 203.0.213.3
 
 ```
-<li>Generate the key and the Certificate Signing Request (CSR), and configure the appropriate permissions.</li>
+<li>Generate the key and the Certificate Signing Request (CSR), and configure the appropriate permissions </li>
 
 ``` shell
     $ sudo openssl req -new -nodes -newkey rsa:2048 -keyout /etc/ssl/private/webserver.key -out /tmp/webserver.csr -config /tmp/web_openssl.cnf
@@ -203,3 +203,8 @@ This step must be executed on the Debian machine hosting the web server. With th
     $ sudo a2ensite web-ssl
     $ sudo systemctl reload apache2
 ```
+
+## Step 11: -------
+<li> Open the search bar → search "Active Directory Users and Computers" → right click "uni.local" → New → Organization Unit → Name it "Laboratory" → right click "Laboratory" → New → Organization Unit → Name it "Computers" → right click "Laboratory" → New → Organization Unit → Name it "Users" → right click "uni.local" → New → Group → Name it "GRP_Segreteria" → right click "uni.local" → New → Group → Name it "GRP_Laboratorio" </li>
+As machines are added to the domain, ensure that users and computers are assigned to their correct organizational units.
+
