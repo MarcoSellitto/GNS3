@@ -1,0 +1,22 @@
+wget https://packages.wazuh.com/4.x/apt/pool/main/w/wazuh-agent/wazuh-agent_4.14.1-1_amd64.deb && sudo WAZUH_MANAGER='10.0.99.41' WAZUH_AGENT_GROUP='Classroom1' WAZUH_AGENT_NAME='CL1Kali-Agent' dpkg -i ./wazuh-agent_4.14.1-1_amd64.deb
+Invoke-WebRequest -Uri https://packages.wazuh.com/4.x/windows/wazuh-agent-4.14.1-1.msi -OutFile $env:tmp\wazuh-agent; msiexec.exe /i $env:tmp\wazuh-agent /q WAZUH_MANAGER='10.0.99.41' WAZUH_AGENT_GROUP='Classroom1' WAZUH_AGENT_NAME='CL1Win-Agent' 
+wget https://packages.wazuh.com/4.x/apt/pool/main/w/wazuh-agent/wazuh-agent_4.14.1-1_amd64.deb && sudo WAZUH_MANAGER='10.0.99.41' WAZUH_AGENT_GROUP='Classroom2' WAZUH_AGENT_NAME='CL2Ubuntu-Agent' dpkg -i ./wazuh-agent_4.14.1-1_amd64.deb
+Invoke-WebRequest -Uri https://packages.wazuh.com/4.x/windows/wazuh-agent-4.14.1-1.msi -OutFile $env:tmp\wazuh-agent; msiexec.exe /i $env:tmp\wazuh-agent /q WAZUH_MANAGER='10.0.99.41' WAZUH_AGENT_GROUP='DomainController' WAZUH_AGENT_NAME='DC-Agent' 
+wget https://packages.wazuh.com/4.x/apt/pool/main/w/wazuh-agent/wazuh-agent_4.14.1-1_amd64.deb && sudo WAZUH_MANAGER='10.0.99.41' WAZUH_AGENT_GROUP='Management' WAZUH_AGENT_NAME='JumpServer' dpkg -i ./wazuh-agent_4.14.1-1_amd64.deb
+Invoke-WebRequest -Uri https://packages.wazuh.com/4.x/windows/wazuh-agent-4.14.1-1.msi -OutFile $env:tmp\wazuh-agent; msiexec.exe /i $env:tmp\wazuh-agent /q WAZUH_MANAGER='10.0.99.41' WAZUH_AGENT_GROUP='Lab' WAZUH_AGENT_NAME='LabWin1-Agent' 
+Invoke-WebRequest -Uri https://packages.wazuh.com/4.x/windows/wazuh-agent-4.14.1-1.msi -OutFile $env:tmp\wazuh-agent; msiexec.exe /i $env:tmp\wazuh-agent /q WAZUH_MANAGER='10.0.99.41' WAZUH_AGENT_GROUP='Lab' WAZUH_AGENT_NAME='LabWin2-Agent' 
+Invoke-WebRequest -Uri https://packages.wazuh.com/4.x/windows/wazuh-agent-4.14.1-1.msi -OutFile $env:tmp\wazuh-agent; msiexec.exe /i $env:tmp\wazuh-agent /q WAZUH_MANAGER='10.0.99.41' WAZUH_AGENT_GROUP='Lab' WAZUH_AGENT_NAME='LabWIn3-Agent' 
+Invoke-WebRequest -Uri https://packages.wazuh.com/4.x/windows/wazuh-agent-4.14.1-1.msi -OutFile $env:tmp\wazuh-agent; msiexec.exe /i $env:tmp\wazuh-agent /q WAZUH_MANAGER='10.0.99.41' WAZUH_AGENT_GROUP='Lab' WAZUH_AGENT_NAME='LabWin4-Agent' 
+wget https://packages.wazuh.com/4.x/apt/pool/main/w/wazuh-agent/wazuh-agent_4.14.1-1_amd64.deb && sudo WAZUH_MANAGER='10.0.99.41' WAZUH_AGENT_GROUP='Lab' WAZUH_AGENT_NAME='Portal-Agent' dpkg -i ./wazuh-agent_4.14.1-1_amd64.deb
+wget https://packages.wazuh.com/4.x/apt/pool/main/w/wazuh-agent/wazuh-agent_4.14.1-1_amd64.deb && sudo WAZUH_MANAGER='10.0.99.41' WAZUH_AGENT_GROUP='Secretary' WAZUH_AGENT_NAME='Printer-Agent' dpkg -i ./wazuh-agent_4.14.1-1_amd64.deb
+Invoke-WebRequest -Uri https://packages.wazuh.com/4.x/windows/wazuh-agent-4.14.1-1.msi -OutFile $env:tmp\wazuh-agent; msiexec.exe /i $env:tmp\wazuh-agent /q WAZUH_MANAGER='10.0.99.41' WAZUH_AGENT_GROUP='Secretary' WAZUH_AGENT_NAME='SecPC-Agent' 
+debian:
+sudo systemctl daemon-reload
+sudo systemctl enable wazuh-agent
+sudo systemctl start wazuh-agent
+
+windows powershell:
+NET START Wazuh
+wget https://packages.wazuh.com/4.x/apt/pool/main/w/wazuh-agent/wazuh-agent_4.14.1-1_amd64.deb && sudo WAZUH_MANAGER='10.0.99.41' WAZUH_AGENT_GROUP='Management' WAZUH_AGENT_NAME='Suricata-Agent' dpkg -i ./wazuh-agent_4.14.1-1_amd64.deb
+wget https://packages.wazuh.com/4.x/apt/pool/main/w/wazuh-agent/wazuh-agent_4.14.1-1_amd64.deb && sudo WAZUH_MANAGER='10.0.99.41' WAZUH_AGENT_GROUP='DMZ' WAZUH_AGENT_NAME='WebServer-Agent' dpkg -i ./wazuh-agent_4.14.1-1_amd64.deb
+wget https://packages.wazuh.com/4.x/apt/pool/main/w/wazuh-agent/wazuh-agent_4.14.1-1_amd64.deb && sudo WAZUH_MANAGER='10.0.99.41' WAZUH_AGENT_GROUP='Management' WAZUH_AGENT_NAME='Workstation-Agent' dpkg -i ./wazuh-agent_4.14.1-1_amd64.deb
