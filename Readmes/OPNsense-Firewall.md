@@ -280,6 +280,7 @@ Save and Apply</li>
 
 <li> Management:
 <ol>
+     <li>Allow Gateway to DNS → Action:Pass | Interface: Management | Direction: In |Protocol:TCP/UDP | Source: Management net | Destination: DNS (10.0.2.30) | Destination Port Range: DNS (53)</li>
      <li>Access to Firewall → Action:Pass | Interface: Management | Direction: In | Protocol:TCP/UDP | Source: JumpServer (10.0.99.11)| Destination: This Firewall | Destination Port Range: HTTPS (443)</li>
      <li>Access to DNS → Action:Pass | Interface: Management | Direction: In |Protocol:TCP/UDP | Source: Wazuh | Destination: DNS (10.0.2.30) | Destination Port Range: DNS (53)</li>
     <li>Block DMZ → Action:Block | Interface: Management | Direction: In | Protocol: any | Source: Management net | Destination: DMZ net | Destination Port Range: any </li>
