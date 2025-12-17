@@ -39,6 +39,7 @@
     exit
  
     access-list 1 permit 10.0.0.0 0.0.255.255
+    access-list 1 permit 203.0.213.0 0.0.0.7
     ip nat inside source list 1 interface GigabitEthernet0/0 overload
     ip route 10.0.0.0 255.255.0.0 203.0.213.2
 
