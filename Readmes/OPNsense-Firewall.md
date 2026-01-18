@@ -112,22 +112,42 @@ Return in Interfaces → Other Types → VLAN →  configure the VLANs:
 Save and Apply.
 </li>
 
-DA MODIFICARE 
-<li>**Configure DNS**: open the left panel → System → Settings → General : set DNS servers to 10.0.2.30 and uncheck "Allow DNS server list to be overwritten …".
+ 
+<li>**Configure DNS**: open the left panel → System → Settings → General : set DNS servers to 193.205.160.3 193.205.160.139 and uncheck "Allow DNS server list to be overwritten …".
 Open the left panel → Services → Unbound DNS → Query Forwarding: check "Use System Nameservers"   
 </li>
 
+<li>**Access list**: open the panel on the left → Services → DHCPv4 → click on + :
+<ol>
+    <li>Enabled → enable it</li>
+    <li>Access List Name → Allowed_VLANs</li>
+    <li>Action → Allow</li>
+    <li>Networks → 10.0.2.0/24 10.0.10.0/24 10.0.20.0/24 10.0.30.0/24 10.0.40.0/24 10.0.50.0/24 10.0.60.0/24 10.0.70.0/24 10.0.99.0/24 </li>
+    <li>Description → ACL for all VLANs</li>
+</ol>
+Save and apply </li>
+
+<li>**Overrides**: open the panel on the left → Services → Unbound DNS → Overrides → click on + :
+<ol>
+    <li>Host → leave it blank</li>
+    <li>Domain → uni.local</li>
+    <li>Type → A IPV4 address</li>
+    <li>Value → 10.0.2.10</li>
+    <li>Description → WebServer</li>
+</ol>
+Save and apply </li>
+
 <li>**DHCP for each VLAN**: open the panel on the left → Services → DHCPv4 → click on the VLAN name :
 <ol>
-    <li>DMZ → enable it, set IP range: 10.0.2.50 - 10.0.2.200 and set DNS Server:10.0.2.30</li>
-    <li>Classroom1 → enable it, set IP range: 10.0.10.50 - 10.0.10.200 and set DNS Server:10.0.2.30 </li>
-    <li>Classroom2 → enable it, set IP range: 10.0.20.50 - 10.0.20.200 and set DNS Server:10.0.2.30</li>
-    <li>Guest → enable it, set IP range: 10.0.30.50 - 10.0.30.200 and set DNS Server:10.0.2.30</li>
-    <li>Secretary → enable it, set IP range: 10.0.40.50 - 10.0.40.200 and set DNS Server:10.0.2.30</li>
-    <li>Laboratory → enable it, set IP range: 10.0.50.50 - 10.0.50.200 and set DNS Server:10.0.2.30</li>
-    <li>Management → enable it, set IP range: 10.0.60.50 - 10.0.60.200 and set DNS Server:10.0.2.30</li>
-    <li>DomainController → enable it, set IP range: 10.0.70.50 - 10.0.70.200 and set DNS Server:10.0.2.30</li>
-    <li>Security → enable it, set IP range: 10.0.99.50 - 10.0.99.200 and set DNS Server:10.0.2.30</li>
+    <li>DMZ → enable it, set IP range: 10.0.2.50 - 10.0.2.200 and set DNS Server:10.0.2.1</li>
+    <li>Classroom1 → enable it, set IP range: 10.0.10.50 - 10.0.10.200 and set DNS Server:10.0.10.1 </li>
+    <li>Classroom2 → enable it, set IP range: 10.0.20.50 - 10.0.20.200 and set DNS Server:10.0.20.1</li>
+    <li>Guest → enable it, set IP range: 10.0.30.50 - 10.0.30.200 and set DNS Server:10.0.30.1</li>
+    <li>Secretary → enable it, set IP range: 10.0.40.50 - 10.0.40.200 and set DNS Server:10.0.40.1</li>
+    <li>Laboratory → enable it, set IP range: 10.0.50.50 - 10.0.50.200 and set DNS Server:10.0.50.1</li>
+    <li>Management → enable it, set IP range: 10.0.60.50 - 10.0.60.200 and set DNS Server:10.0.60.1</li>
+    <li>DomainController → enable it, set IP range: 10.0.70.50 - 10.0.70.200 and set DNS Server:10.0.70.1</li>
+    <li>Security → enable it, set IP range: 10.0.99.50 - 10.0.99.200 and set DNS Server:10.0.99.1</li>
 </ol>
 Save and apply </li>
 
@@ -311,40 +331,41 @@ Save and Apply</li>
     <li>Ansible for Secretary → Action:Pass | Interface: Management | Direction: In |Protocol:TCP | Source: Workstation (10.0.60.11) | Destination: Secretary net | Destination Port Range: ssh (22)</li>
     <li>Ansible for Laboratory → Action:Pass | Interface: Management | Direction: In |Protocol:TCP | Source: Workstation (10.0.60.11) | Destination: Laboratory net | Destination Port Range: ssh (22)</li>
     <li>Allow Gateway to DNS → Action:Pass | Interface: Management | Direction: In |Protocol:TCP/UDP | Source: Management net | Destination: This Firewall | Destination Port Range: DNS (53)</li>
-    <li>Access to Firewall → Action:Pass | Interface: Management | Direction: In | Protocol:TCP/UDP | Source: JumpServer (10.0.60.12)| Destination: This Firewall | Destination Port Range: HTTPS (443)</li>
+    <li>Access to Firewall → Action:Pass | Interface: Management | Direction: In | Protocol:TCP | Source: JumpServer (10.0.60.12)| Destination: This Firewall | Destination Port Range: HTTPS (443)</li>
+    <li>Access to Wazuh → Action:Pass | Interface: Management | Direction: In | Protocol:TCP | Source: JumpServer (10.0.60.12)| Destination: Wazuh (10.0.99.14) | Destination Port Range: HTTPS (443)</li>
     <li>Block DMZ → Action:Block | Interface: Management | Direction: In | Protocol: any | Source: Management net | Destination: DMZ net | Destination Port Range: any </li>
     <li>Block Class1 → Action:Block | Interface: Management| Direction: In | Protocol: any | Source: Management net | Destination: Classroom1 net | Destination Port Range: any </li>
     <li>Block Class2 → Action:Block | Interface: Management | Direction: In | Protocol: any | Source: Management net | Destination: Classroom2 net | Destination Port Range: any </li>
     <li>Block Guest → Action:Block | Interface: Management | Direction: In | Protocol: any | Source: Management net | Destination: Guest net | Destination Port Range: any </li>
     <li>Block Laboratory → Action:Block | Interface: Management | Direction: In | Protocol: any | Source: Management net | Destination: Laboratory net | Destination Port Range: any</li>
     <li>Block DomainController → Action:Block | Interface: Management| Direction: In | Protocol: any | Source: Management net | Destination: DomainController net | Destination Port Range: any </li>
-    <li>Access to Web(HTTPS) → Action:Pass | Interface: Management | Direction: In | Protocol:TCP | Source: Wazuh (10.0.99.14) | Destination: any | Destination Port Range: HTTPS (443)</li>
-    <li>Access to Web(HTTP) → Action:Pass | Interface: Management | Direction: In | Protocol:TCP | Source: Wazuh (10.0.99.14) | Destination: any | Destination Port Range: HTTP (80)</li>
+    <li>Block Security → Action:Block | Interface: Management | Direction: In | Protocol: any | Source: Management net | Destination: Security net | Destination Port Range: any </li>
+    <li>Access to Web(HTTPS) → Action:Pass | Interface: Management | Direction: In | Protocol:TCP | Source: Management net | Destination: any | Destination Port Range: HTTPS (443)</li>
+    <li>Access to Web(HTTP) → Action:Pass | Interface: Management | Direction: In | Protocol:TCP | Source: Management net | Destination: any | Destination Port Range: HTTP (80)</li>
 </ol>
 </li>
 
 <li> Security:
 <ol>
-     <li>Allow Gateway to DNS → Action:Pass | Interface: Management | Direction: In |Protocol:TCP/UDP | Source: Management net | Destination: This Firewall | Destination Port Range: DNS (53)</li>
-     <li>Access to DNS → Action:Pass | Interface: Management | Direction: In |Protocol:TCP/UDP | Source: Wazuh | Destination: DNS (10.0.2.30) | Destination Port Range: DNS (53)</li>
-    <li>Block DMZ → Action:Block | Interface: Management | Direction: In | Protocol: any | Source: Management net | Destination: DMZ net | Destination Port Range: any </li>
-    <li>Block Class1 → Action:Block | Interface: Management| Direction: In | Protocol: any | Source: Management net | Destination: Classroom1 net | Destination Port Range: any </li>
-    <li>Block Class2 → Action:Block | Interface: Management | Direction: In | Protocol: any | Source: Management net | Destination: Classroom2 net | Destination Port Range: any </li>
-    <li>Block Guest → Action:Block | Interface: Management | Direction: In | Protocol: any | Source: Management net | Destination: Guest net | Destination Port Range: any </li>
-    <li>Block Laboratory → Action:Block | Interface: Management | Direction: In | Protocol: any | Source: Management net | Destination: Laboratory net | Destination Port Range: any</li>
-    <li>Block DomainController → Action:Block | Interface: Management| Direction: In | Protocol: any | Source: Management net | Destination: DomainController net | Destination Port Range: any </li>
-    <li>Access to Web(HTTPS) → Action:Pass | Interface: Management | Direction: In | Protocol:TCP | Source: Wazuh (10.0.99.14) | Destination: any | Destination Port Range: HTTPS (443)</li>
-    <li>Access to Web(HTTP) → Action:Pass | Interface: Management | Direction: In | Protocol:TCP | Source: Wazuh (10.0.99.14) | Destination: any | Destination Port Range: HTTP (80)</li>
+    <li>Allow Gateway to DNS → Action:Pass | Interface: Security | Direction: In |Protocol:TCP/UDP | Source: Security net | Destination: This Firewall | Destination Port Range: DNS (53)</li> 
+    <li>Block DMZ → Action:Block | Interface: Security | Direction: In | Protocol: any | Source: Security net | Destination: DMZ net | Destination Port Range: any </li>
+    <li>Block Class1 → Action:Block | Interface: Security | Direction: In | Protocol: any | Source: Security net | Destination: Classroom1 net | Destination Port Range: any </li>
+    <li>Block Class2 → Action:Block | Interface: Security | Direction: In | Protocol: any | Source: Security net | Destination: Classroom2 net | Destination Port Range: any </li>
+    <li>Block Guest → Action:Block | Interface: Security | Direction: In | Protocol: any | Source: Security net | Destination: Guest net | Destination Port Range: any </li>
+    <li>Block Laboratory → Action:Block | Interface: Security | Direction: In | Protocol: any | Source: Security net | Destination: Laboratory net | Destination Port Range: any</li>
+    <li>Block Management → Action:Block | Interface: Security | Direction: In | Protocol: any | Source: Security net | Destination: Security net | Destination Port Range: any</li>
+    <li>Block DomainController → Action:Block | Interface: Security | Direction: In | Protocol: any | Source: Security net | Destination: DomainController net | Destination Port Range: any </li>
+    <li>Access to Web(HTTPS) → Action:Pass | Interface: Security | Direction: In | Protocol:TCP | Source: Security net | Destination: any | Destination Port Range: HTTPS (443)</li>
+    <li>Access to Web(HTTP) → Action:Pass | Interface: Security | Direction: In | Protocol:TCP | Source: Security net | Destination: any | Destination Port Range: HTTP (80)</li>
 </ol>
 </li>
 
-DA MODIFICARE
-<li>**Wazuh Agent**: Now it is the time to delete the LAN interface and enable access to the firewall throw Management VLAN. Go to System → Settings → Administration : Listen Interfaces →  select Management. Now open the GUI from the workstation in Management . Connect via SSH to Jumpserver and access to the GUI on the browser. NOw you can delete the LAN Interfaces and disable it.
-Only the Jumpserver acan access to GUI of the firewall.
+
+<li>**Wazuh Agent**: Now we can update the firmware and install the wazuh agent. Go to System → Firmware → Status : click Check for updates and run the installation. After the installation, go to System → Firmware → Plugins: search os-wazuh-agent and install it . After you have to reload the gui. Now go to Services → Wazuh Agent → Settings→ enable it and put in Manager hostname: 10.0.99.14, Wazuh ip. Finally you can see in the Wazuh dashboard that OPNSense agent is working. 
 </li>
 
 
-<li>**End Configuration**: Now it is the time to delete the LAN interface and enable access to the firewall throw Management VLAN. Go to System → Settings → Administration : Listen Interfaces →  select Management. Now open the GUI from the workstation in Management . Connect via SSH to Jumpserver and access to the GUI on the browser. NOw you can delete the LAN Interfaces and disable it.
+<li>**End Configuration**: Now it is the time to delete the LAN interface and enable access to the firewall throw Management VLAN. Go to System → Settings → Administration : Listen Interfaces →  select Management. Now open the GUI from the workstation in Management . Connect via SSH to Jumpserver and access to the GUI on the browser. Now you can delete the LAN Interfaces and disable it.
 Only the Jumpserver acan access to GUI of the firewall.
 </li>
 
