@@ -25,11 +25,9 @@
 	ovs-ofctl add-flow br0 "priority=200, dl_type=0x0806, actions=NORMAL"
 	ovs-ofctl add-flow br0 "priority=200, dl_type=0x0800, nw_proto=17, tp_src=68, tp_dst=67, actions=NORMAL"
 	ovs-ofctl add-flow br0 "priority=200, dl_type=0x0800, nw_proto=17, tp_src=67, tp_dst=68, actions=NORMAL"
-	ovs-ofctl add-flow br0 "priority=100, in_port=eth0, actions=NORMAL"
 	ovs-ofctl add-flow br0 "priority=100, ip, in_port=eth1, actions=mod_nw_tos:0,output:eth0"
 	ovs-ofctl add-flow br0 "priority=100, ip, in_port=eth2, actions=mod_nw_tos:0,output:eth0"
 	ovs-ofctl add-flow br0 "priority=100, ip, in_port=eth3, actions=mod_nw_tos:0,output:eth0"
-	ovs-ofctl add-flow br0 "priority=50, in_port=eth1, actions=output:eth0"
-	ovs-ofctl add-flow br0 "priority=50, in_port=eth2, actions=output:eth0"
-	ovs-ofctl add-flow br0 "priority=50, in_port=eth3, actions=output:eth0"
+	ovs-ofctl add-flow br0 "priority=100, in_port=eth0, actions=output:eth1,output:eth2,output:eth3"
+	ovs-ofctl add-flow br0 "priority=0, actions=drop"
 ```
