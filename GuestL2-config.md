@@ -23,18 +23,12 @@
 ``` shell
 	ovs-vsctl --if-exists del-br br0
 
-	ovs-vsctl add-br br0
-	ip link set br0 up
-
-	ovs-vsctl add-port br0 eth0
-	ovs-vsctl set port eth0 trunks=30
-
-	ovs-vsctl add-port br0 eth1 tag=30
-	ovs-vsctl add-port br0 eth2 tag=30
-	ovs-vsctl add-port br0 eth3 tag=30
-
-	# Isolation with flows
-	ovs-ofctl del-flows br0
+	# ARP + DHCP
+	ovs-ofctl add-flow br0 "priority=200, dl_type=0x0806, actions=NORMAL"
+	ovs-ofctl add-flow br0 "priority=200, dl_type=0x0800, nw_proto=17, tp_src=68, tp_dst=67, actions=NORMAL"
+	ovs-ofctl add-flow br0 "priority=200, dl_type=0x0800, nw_proto=17, tp_src=67, tp_dst=68, actions=NORMAL"
+	
+	# ISOLATION
 	ovs-ofctl add-flow br0 "priority=100, in_port=eth0, actions=NORMAL"
 	ovs-ofctl add-flow br0 "priority=100, in_port=eth1, actions=output:eth0"
 	ovs-ofctl add-flow br0 "priority=100, in_port=eth2, actions=output:eth0"
