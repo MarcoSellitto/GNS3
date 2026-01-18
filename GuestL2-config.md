@@ -25,9 +25,8 @@
 	ovs-ofctl add-flow br0 "priority=200, dl_type=0x0806, actions=NORMAL"
 	ovs-ofctl add-flow br0 "priority=200, dl_type=0x0800, nw_proto=17, tp_src=68, tp_dst=67, actions=NORMAL"
 	ovs-ofctl add-flow br0 "priority=200, dl_type=0x0800, nw_proto=17, tp_src=67, tp_dst=68, actions=NORMAL"
-	ovs-ofctl add-flow br0 "priority=150, dl_type=0x0800, nw_proto=1, actions=NORMAL"
 	ovs-ofctl add-flow br0 "priority=100, in_port=eth0, actions=NORMAL"
-	ovs-ofctl add-flow br0 "priority=100, in_port=eth1, actions=learn(table=0,idle_timeout=300,priority=200,NXM_OF_ETH_DST[]=NXM_OF_ETH_SRC[],load:NXM_OF_IN_PORT[]->NXM_OF_OUTPUT[]),output:eth0"
-	ovs-ofctl add-flow br0 "priority=100, in_port=eth2, actions=learn(table=0,idle_timeout=300,priority=200,NXM_OF_ETH_DST[]=NXM_OF_ETH_SRC[],load:NXM_OF_IN_PORT[]->NXM_OF_OUTPUT[]),output:eth0"
-	ovs-ofctl add-flow br0 "priority=100, in_port=eth3, actions=learn(table=0,idle_timeout=300,priority=200,NXM_OF_ETH_DST[]=NXM_OF_ETH_SRC[],load:NXM_OF_IN_PORT[]->NXM_OF_OUTPUT[]),output:eth0"
+	ovs-ofctl add-flow br0 "priority=100, in_port=eth1, actions=learn(table=0,idle_timeout=300,priority=200,NXM_OF_ETH_DST[]=NXM_OF_ETH_SRC[],output:NXM_OF_IN_PORT[]),output:eth0"
+	ovs-ofctl add-flow br0 "priority=100, in_port=eth2, actions=learn(table=0,idle_timeout=300,priority=200,NXM_OF_ETH_DST[]=NXM_OF_ETH_SRC[],output:NXM_OF_IN_PORT[]),output:eth0"
+	ovs-ofctl add-flow br0 "priority=100, in_port=eth3, actions=learn(table=0,idle_timeout=300,priority=200,NXM_OF_ETH_DST[]=NXM_OF_ETH_SRC[],output:NXM_OF_IN_PORT[]),output:eth0"
 ```
