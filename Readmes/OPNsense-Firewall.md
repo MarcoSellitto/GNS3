@@ -311,9 +311,10 @@ Save and Apply</li>
 
 <li> DomainController:
 <ol>
-    <li>Allow AD → Action:Pass | Interface: DMZ | Direction: In | Protocol:TCP/UDP | Source: DomainController net | Destination: Laboratory net | Destination Port Range: any</li>
+    <li>Allow AD → Action:Pass | Interface: DomainController | Direction: In | Protocol:TCP/UDP | Source: DomainController net | Destination: Laboratory net | Destination Port Range: any</li>
     <li>Access to DNS → Action:Pass | Interface: DomainController | Direction: In |Protocol:TCP/UDP | Source: DomainController net | This firewall | Destination Port Range: DNS (53)</li>
     <li>Send Wazuh Logs → Action:Pass | Interface: DomainController | Direction: In | Protocol:TCP | Source: DomainController net | Destination: Wazuh (10.0.99.14) | Destination Port Range: 1514-1515</li>
+    <li>Access to WebServer → Action:Pass | Interface: DomainController | Direction: In | Protocol:TCP | Source: DomainController net | Destination: WebServer (10.0.2.10) | Destination Port Range: HTTPS(443)</li>
     <li>Block DMZ → Action:Block | Interface: DomainController | Direction: In | Protocol: any | Source: DomainController net | Destination: DMZ net | Destination Port Range: any </li>
     <li>Block Class1 → Action:Block | Interface: DomainController | Direction: In | Protocol: any | Source: DomainController net | Destination: Classroom1 net | Destination Port Range: any </li>
     <li>Block Class2 → Action:Block | Interface: DomainController | Direction: In | Protocol: any | Source: DomainController net | Destination: Classroom2 net | Destination Port Range: any </li>
@@ -321,6 +322,9 @@ Save and Apply</li>
     <li>Block Secretary → Action:Block | Interface: DomainController  | Direction: In | Protocol: any | Source: DomainController net | Destination: Secretary net | Destination Port Range: any </li>
     <li>Block Management → Action:Block | Interface: DomainController | Direction: In | Protocol: any | Source: DomainController net | Destination: Management net | Destination Port Range: any </li>
     <li>Block Security → Action:Block | Interface: DomainController | Direction: In | Protocol: any | Source: DomainController net | Destination: Security net | Destination Port Range: any </li>
+    <li>Allow ping → Action:Pass | Interface: DomainController | Direction: In | Protocol:ICMP | Source: DomainController net | Destination: any | Destination Port Range: any</li>
+    <li>Access to Web(HTTPS) → Action:Pass | Interface: DomainController | Direction: In | Protocol:TCP | Source: DomainController net | Destination: any | Destination Port Range: HTTPS (443)</li>
+    <li>Access to Web(HTTP) → Action:Pass | Interface: DomainController | Direction: In | Protocol:TCP | Source: DomainController net | Destination: any | Destination Port Range: HTTP (80)</li>
 </ol>
 </li>
 
@@ -333,6 +337,8 @@ Save and Apply</li>
     <li>Allow Gateway to DNS → Action:Pass | Interface: Management | Direction: In |Protocol:TCP/UDP | Source: Management net | Destination: This Firewall | Destination Port Range: DNS (53)</li>
     <li>Access to Firewall → Action:Pass | Interface: Management | Direction: In | Protocol:TCP | Source: JumpServer (10.0.60.12)| Destination: This Firewall | Destination Port Range: HTTPS (443)</li>
     <li>Access to Wazuh → Action:Pass | Interface: Management | Direction: In | Protocol:TCP | Source: JumpServer (10.0.60.12)| Destination: Wazuh (10.0.99.14) | Destination Port Range: HTTPS (443)</li>
+    <li>Send Wazuh Logs → Action:Pass | Interface: Management | Direction: In | Protocol:TCP | Source: Management net | Destination: Wazuh (10.0.99.14) | Destination Port Range: 1514-1515</li>
+    <li>Access to WebServer → Action:Pass | Interface: Laboratory | Direction: In | Protocol:TCP | Source: Laboratory net | Destination: WebServer (10.0.2.10) | Destination Port Range: HTTPS(443)</li>
     <li>Block DMZ → Action:Block | Interface: Management | Direction: In | Protocol: any | Source: Management net | Destination: DMZ net | Destination Port Range: any </li>
     <li>Block Class1 → Action:Block | Interface: Management| Direction: In | Protocol: any | Source: Management net | Destination: Classroom1 net | Destination Port Range: any </li>
     <li>Block Class2 → Action:Block | Interface: Management | Direction: In | Protocol: any | Source: Management net | Destination: Classroom2 net | Destination Port Range: any </li>
@@ -340,6 +346,7 @@ Save and Apply</li>
     <li>Block Laboratory → Action:Block | Interface: Management | Direction: In | Protocol: any | Source: Management net | Destination: Laboratory net | Destination Port Range: any</li>
     <li>Block DomainController → Action:Block | Interface: Management| Direction: In | Protocol: any | Source: Management net | Destination: DomainController net | Destination Port Range: any </li>
     <li>Block Security → Action:Block | Interface: Management | Direction: In | Protocol: any | Source: Management net | Destination: Security net | Destination Port Range: any </li>
+    <li>Allow ping → Action:Pass | Interface: Management | Direction: In | Protocol:ICMP | Source: Management net | Destination: any | Destination Port Range: any</li>
     <li>Access to Web(HTTPS) → Action:Pass | Interface: Management | Direction: In | Protocol:TCP | Source: Management net | Destination: any | Destination Port Range: HTTPS (443)</li>
     <li>Access to Web(HTTP) → Action:Pass | Interface: Management | Direction: In | Protocol:TCP | Source: Management net | Destination: any | Destination Port Range: HTTP (80)</li>
 </ol>
@@ -357,6 +364,7 @@ Save and Apply</li>
     <li>Block DomainController → Action:Block | Interface: Security | Direction: In | Protocol: any | Source: Security net | Destination: DomainController net | Destination Port Range: any </li>
     <li>Access to Web(HTTPS) → Action:Pass | Interface: Security | Direction: In | Protocol:TCP | Source: Security net | Destination: any | Destination Port Range: HTTPS (443)</li>
     <li>Access to Web(HTTP) → Action:Pass | Interface: Security | Direction: In | Protocol:TCP | Source: Security net | Destination: any | Destination Port Range: HTTP (80)</li>
+    <li>Allow ping → Action:Pass | Interface: Security | Direction: In | Protocol:ICMP | Source: Security net | Destination: any | Destination Port Range: any</li>
 </ol>
 </li>
 
