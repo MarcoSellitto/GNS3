@@ -32,12 +32,8 @@ def setup_driver(browser_type="edge"):
             options.add_argument("--headless") # Scommenta se vuoi nasconderlo su Windows
             options.add_argument("--window-size=1920,1080")
             
-            try:
-                service = EdgeService(EdgeChromiumDriverManager().install())
-            except Exception as e:
-                print(f"[WARN] Driver online fallito. Uso locale. {e}")
-                local_driver_path = r"C:\Users\Student\user_behavior_generation\worker\msedgedriver.exe"
-                service = EdgeService(local_driver_path)
+            local_driver_path = r"C:\Users\Student\user_behavior_generation\worker\msedgedriver.exe"
+            service = EdgeService(local_driver_path)
 
             driver = webdriver.Edge(service=service, options=options)
         

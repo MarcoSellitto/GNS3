@@ -33,11 +33,11 @@
 #### **CL1-Windows (10.0.10.53)**
 * **Web (Google):**
   ```bash
-  ansible all -i 10.0.10.53, -m raw -a "C:\Users\Student\user_behavior_generation\worker\browser_task.bat 'https://www.google.com' generic 60"
+  ansible all -i 10.0.10.53, -m raw -a "C:\Users\Student\user_behavior_generation\worker\browser_task_student_and_lab.bat https://www.google.com generic 60" -u Student -e "ansible_shell_type=cmd ansible_connection=ssh"
   ```
 * **PDF:**
   ```bash
-  ansible all -i 10.0.10.53, -m raw -a "C:\Users\Student\user_behavior_generation\worker\browser_task.bat C:\Users\Student\user_behavior_generation\worker\BDD.pdf pdf 60"
+  ansible all -i 10.0.10.53, -m raw -a "C:\Users\Student\user_behavior_generation\worker\browser_task.bat C:\Users\Student\user_behavior_generation\worker\BDD.pdf pdf 60" -u Student -e "ansible_shell_type=cmd ansible_connection=ssh"
   ```
 
 #### **CL1-Lubuntu (`10.0.10.56`)**
