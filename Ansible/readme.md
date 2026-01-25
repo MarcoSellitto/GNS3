@@ -23,11 +23,11 @@
 #### **CL1-Kali (`10.0.10.52`)**
 * **Web (Google):**
   ```bash
-  ssh student@10.0.10.52 "export DISPLAY=:0 && export TMPDIR=/home/student/tmp_firefox && /home/student/user_behavior_generation/worker/venv/bin/python /home/student/user_behavior_generation/worker/smart_worker.py [https://www.google.com](https://www.google.com) generic 60"
+  ssh student@10.0.10.52 "export export TMPDIR=/home/student/tmp_firefox && /home/student/user_behavior_generation/worker/venv/bin/python /home/student/user_behavior_generation/worker/smart_worker.py 'https://www.google.com' generic 60"
   ```
 * **PDF:**
   ```bash
-  ssh student@10.0.10.52 "export DISPLAY=:0 && export TMPDIR=/home/student/tmp_firefox && /home/student/user_behavior_generation/worker/venv/bin/python /home/student/user_behavior_generation/worker/pdf_worker.py /home/student/user_behavior_generation/worker/BDD.pdf 60"
+  ssh student@10.0.10.52 "export export TMPDIR=/home/student/tmp_firefox && /home/student/user_behavior_generation/worker/venv/bin/python /home/student/user_behavior_generation/worker/pdf_worker.py /home/student/user_behavior_generation/worker/BDD.pdf 60"
   ```
 
 #### **CL1-Windows (10.0.10.53)**
