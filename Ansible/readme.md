@@ -1,0 +1,110 @@
+# 🎓 User Behavior Simulation - GNS3 Network Testing
+
+Questo repository contiene gli script per l'automazione del comportamento utenti (Web, PDF, Mail, Stampa) all'interno di una rete universitaria simulata in GNS3.
+
+---
+
+## 📂 Struttura della Rete
+
+| Zona | Hostname / OS | IP Address | Utente OS | Note |
+| :--- | :--- | :--- | :--- | :--- |
+| **Classroom 1** | Kali Linux | `10.0.10.52` | `student` | Linux Worker |
+| | Windows 10 | `10.0.10.53` | `Student` | Usa `browser_task_student_and_lab.bat` |
+| | Lubuntu | `10.0.10.56` | `student` | Linux Worker |
+| **Classroom 2** | Ubuntu | `10.0.20.54` | `student` | Linux Worker |
+| | Lubuntu | `10.0.20.55` | `student` | Linux Worker |
+| **Secretary** | Windows 10 | `10.0.40.51` | `Secretary` | Usa `browser_task_secretary.bat` |
+| **Laboratory** | Windows 10 | `10.0.50.51` | `Student` | Usa `browser_task_student_and_lab.bat` |
+
+---
+
+## 🚀 Comandi di Test (Manuali)
+
+Esegui questi comandi dalla macchina **Controller (Ansible Node)** per verificare il funzionamento degli script.
+*Nota: I test sono impostati per una durata di **60 secondi**.*
+
+### Classroom 1
+
+#### **CL1-Kali (`10.0.10.52`)**
+* **Web (Google):**
+  ```bash
+  ssh student@10.0.10.52 "export DISPLAY=:0 && export TMPDIR=/home/student/tmp_firefox && /home/student/user_behavior_generation/worker/venv/bin/python /home/student/user_behavior_generation/worker/smart_worker_headless.py [https://www.google.com](https://www.google.com) generic 60"
+  ```
+* **PDF:**
+  ```bash
+  ssh student@10.0.10.52 "export DISPLAY=:0 && export TMPDIR=/home/student/tmp_firefox && /home/student/user_behavior_generation/worker/venv/bin/python /home/student/user_behavior_generation/worker/pdf_worker_headless.py /home/student/user_behavior_generation/worker/BDD.pdf 60"
+  ```
+
+#### **CL1-Windows (10.0.10.53)**
+* **Web (Google):**
+  ```bash
+  ansible all -i 10.0.10.53, -m raw -a "C:\Users\Student\user_behavior_generation\worker\browser_task_student_and_lab.bat [https://www.google.com](https://www.google.com) generic 60"
+  ```
+* **PDF:**
+  ```bash
+  ansible all -i 10.0.10.53, -m raw -a "C:\Users\Student\user_behavior_generation\worker\browser_task_student_and_lab.bat C:\Users\Student\user_behavior_generation\worker\BDD.pdf pdf 60"
+  ```
+
+#### **CL1-Lubuntu (`10.0.10.56`)**
+* **Web (Google):**
+  ```bash
+  ssh student@10.0.10.56 "export DISPLAY=:0 && export TMPDIR=/home/student/tmp_firefox && /home/student/user_behavior_generation/worker/venv/bin/python /home/student/user_behavior_generation/worker/smart_worker_headless.py [https://www.google.com](https://www.google.com) generic 60"
+  ```
+* **PDF:**
+  ```bash
+  ssh student@10.0.10.56 "export DISPLAY=:0 && export TMPDIR=/home/student/tmp_firefox && /home/student/user_behavior_generation/worker/venv/bin/python /home/student/user_behavior_generation/worker/pdf_worker_headless.py /home/student/user_behavior_generation/worker/BDD.pdf 60"
+  ```
+
+### Classroom 2
+
+#### **CL2-Ubuntu (`10.0.20.54`)**
+* **Web:**
+  ```bash
+  ssh student@10.0.20.54 "export DISPLAY=:0 && export TMPDIR=/home/student/tmp_firefox && /home/student/user_behavior_generation/worker/venv/bin/python /home/student/user_behavior_generation/worker/smart_worker_headless.py [https://www.wikipedia.org](https://www.wikipedia.org) generic 60"
+  ```
+* **PDF:**
+  ```bash
+  ssh student@10.0.20.54 "export DISPLAY=:0 && export TMPDIR=/home/student/tmp_firefox && /home/student/user_behavior_generation/worker/venv/bin/python /home/student/user_behavior_generation/worker/pdf_worker_headless.py /home/student/user_behavior_generation/worker/expert.pdf 60"
+  ```
+
+#### **CL2-Lubuntu (`10.0.20.55`)**
+* **Web (Google):**
+  ```bash
+  ssh student@10.0.20.55 "export DISPLAY=:0 && export TMPDIR=/home/student/tmp_firefox && /home/student/user_behavior_generation/worker/venv/bin/python /home/student/user_behavior_generation/worker/smart_worker_headless.py [https://www.google.com](https://www.google.com) generic 60"
+  ```
+* **PDF:**
+  ```bash
+  ssh student@10.0.20.55 "export DISPLAY=:0 && export TMPDIR=/home/student/tmp_firefox && /home/student/user_behavior_generation/worker/venv/bin/python /home/student/user_behavior_generation/worker/pdf_worker_headless.py /home/student/user_behavior_generation/worker/BDD.pdf 60"
+  ```
+
+### Secretary
+
+#### **Sec-PC (`10.0.40.51`)**
+* **Web:**
+  ```bash
+  ansible all -i 10.0.40.51, -m raw -a "C:\Users\Secretary\user_behavior_generation\worker\browser_task_secretary.bat [https://www.unisa.it](https://www.unisa.it) generic 60"
+  ```
+* **PDF:**
+  ```bash
+  ansible all -i 10.0.40.51, -m raw -a "C:\Users\Secretary\user_behavior_generation\worker\browser_task_secretary.bat C:\Users\Student\user_behavior_generation\worker\examhall.pdf pdf 60"
+  ```
+* **Mail:**
+  ```bash
+  ansible all -i 10.0.40.51, -m raw -a "C:\Users\Secretary\user_behavior_generation\worker\browser_task_secretary.bat gmail mail 60"
+  ```
+* **Print:**
+  ```bash
+  ansible all -i 10.0.40.51, -m raw -a "C:\Users\Secretary\user_behavior_generation\worker\browser_task_secretary.bat C:\Users\Student\user_behavior_generation\worker\BDD.pdf print 60"
+  ```
+
+### Lab
+
+#### **Sec-PC (`10.0.50.51`)**
+* **Web:**
+  ```bash
+  ansible all -i 10.0.50.51, -m raw -a "C:\Users\Student\user_behavior_generation\worker\browser_task_student_and_lab.bat [https://www.stackoverflow.com](https://www.stackoverflow.com) generic 60"
+  ```
+* **PDF:**
+  ```bash
+  ansible all -i 10.0.50.51, -m raw -a "C:\Users\Student\user_behavior_generation\worker\browser_task_student_and_lab.bat C:\Users\Student\user_behavior_generation\worker\expert.pdf pdf 60"
+  ```
