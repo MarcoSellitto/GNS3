@@ -23,17 +23,17 @@
 #### **CL1-Kali (`10.0.10.52`)**
 * **Web (Google):**
   ```bash
-  ssh student@10.0.10.52 "export export TMPDIR=/home/student/tmp_firefox && /home/student/user_behavior_generation/worker/venv/bin/python /home/student/user_behavior_generation/worker/smart_worker.py 'https://www.google.com' generic 60"
+  ssh student@10.0.10.52 "export TMPDIR=/home/student/tmp_firefox && /home/student/user_behavior_generation/worker/venv/bin/python /home/student/user_behavior_generation/worker/smart_worker.py 'https://www.google.com' generic 60"
   ```
 * **PDF:**
   ```bash
-  ssh student@10.0.10.52 "export export TMPDIR=/home/student/tmp_firefox && /home/student/user_behavior_generation/worker/venv/bin/python /home/student/user_behavior_generation/worker/pdf_worker.py /home/student/user_behavior_generation/worker/BDD.pdf 60"
+  ssh student@10.0.10.52 "export TMPDIR=/home/student/tmp_firefox && /home/student/user_behavior_generation/worker/venv/bin/python /home/student/user_behavior_generation/worker/pdf_worker.py /home/student/user_behavior_generation/worker/BDD.pdf 60"
   ```
 
 #### **CL1-Windows (10.0.10.53)**
 * **Web (Google):**
   ```bash
-  ansible all -i 10.0.10.53, -m raw -a "C:\Users\Student\user_behavior_generation\worker\browser_task.bat [https://www.google.com](https://www.google.com) generic 60"
+  ansible all -i 10.0.10.53, -m raw -a "C:\Users\Student\user_behavior_generation\worker\browser_task.bat 'https://www.google.com' generic 60"
   ```
 * **PDF:**
   ```bash
@@ -43,11 +43,11 @@
 #### **CL1-Lubuntu (`10.0.10.56`)**
 * **Web (Google):**
   ```bash
-  ssh student@10.0.10.56 "export DISPLAY=:0 && export TMPDIR=/home/student/tmp_firefox && /home/student/user_behavior_generation/worker/venv/bin/python /home/student/user_behavior_generation/worker/smart_worker.py [https://www.google.com](https://www.google.com) generic 60"
+  ssh student@10.0.10.56 "export TMPDIR=/home/student/tmp_firefox && /home/student/user_behavior_generation/worker/venv/bin/python /home/student/user_behavior_generation/worker/smart_worker.py 'https://www.google.com' generic 60"
   ```
 * **PDF:**
   ```bash
-  ssh student@10.0.10.56 "export DISPLAY=:0 && export TMPDIR=/home/student/tmp_firefox && /home/student/user_behavior_generation/worker/venv/bin/python /home/student/user_behavior_generation/worker/pdf_worker.py /home/student/user_behavior_generation/worker/BDD.pdf 60"
+  ssh student@10.0.10.56 "export TMPDIR=/home/student/tmp_firefox && /home/student/user_behavior_generation/worker/venv/bin/python /home/student/user_behavior_generation/worker/pdf_worker.py /home/student/user_behavior_generation/worker/BDD.pdf 60"
   ```
 
 ### Classroom 2
@@ -55,21 +55,21 @@
 #### **CL2-Ubuntu (`10.0.20.54`)**
 * **Web:**
   ```bash
-  ssh student@10.0.20.54 "export DISPLAY=:0 && export TMPDIR=/home/student/tmp_firefox && /home/student/user_behavior_generation/worker/venv/bin/python /home/student/user_behavior_generation/worker/smart_worker.py [https://www.wikipedia.org](https://www.wikipedia.org) generic 60"
+  ssh student@10.0.20.54 "export TMPDIR=/home/student/tmp_firefox && /home/student/user_behavior_generation/worker/venv/bin/python /home/student/user_behavior_generation/worker/smart_worker.py 'https://www.wikipedia.org' generic 60"
   ```
 * **PDF:**
   ```bash
-  ssh student@10.0.20.54 "export DISPLAY=:0 && export TMPDIR=/home/student/tmp_firefox && /home/student/user_behavior_generation/worker/venv/bin/python /home/student/user_behavior_generation/worker/pdf_worker.py /home/student/user_behavior_generation/worker/expert.pdf 60"
+  ssh student@10.0.20.54 "export TMPDIR=/home/student/tmp_firefox && /home/student/user_behavior_generation/worker/venv/bin/python /home/student/user_behavior_generation/worker/pdf_worker.py /home/student/user_behavior_generation/worker/expert.pdf 60"
   ```
 
 #### **CL2-Lubuntu (`10.0.20.55`)**
 * **Web (Google):**
   ```bash
-  ssh student@10.0.20.55 "export DISPLAY=:0 && export TMPDIR=/home/student/tmp_firefox && /home/student/user_behavior_generation/worker/venv/bin/python /home/student/user_behavior_generation/worker/smart_worker.py [https://www.google.com](https://www.google.com) generic 60"
+  ssh student@10.0.20.55 "export TMPDIR=/home/student/tmp_firefox && /home/student/user_behavior_generation/worker/venv/bin/python /home/student/user_behavior_generation/worker/smart_worker.py 'https://www.google.com' generic 60"
   ```
 * **PDF:**
   ```bash
-  ssh student@10.0.20.55 "export DISPLAY=:0 && export TMPDIR=/home/student/tmp_firefox && /home/student/user_behavior_generation/worker/venv/bin/python /home/student/user_behavior_generation/worker/pdf_worker.py /home/student/user_behavior_generation/worker/BDD.pdf 60"
+  ssh student@10.0.20.55 "export TMPDIR=/home/student/tmp_firefox && /home/student/user_behavior_generation/worker/venv/bin/python /home/student/user_behavior_generation/worker/pdf_worker.py /home/student/user_behavior_generation/worker/BDD.pdf 60"
   ```
 
 ### Secretary
@@ -77,7 +77,7 @@
 #### **Sec-PC (`10.0.40.51`)**
 * **Web:**
   ```bash
-  ansible all -i 10.0.40.51, -m raw -a "C:\Users\User\user_behavior_generation\worker\browser_task.bat [https://www.unisa.it](https://www.unisa.it) generic 60"
+  ansible all -i 10.0.40.51, -m raw -a "C:\Users\User\user_behavior_generation\worker\browser_task.bat 'https://www.unisa.it' generic 60"
   ```
 * **PDF:**
   ```bash
@@ -97,7 +97,7 @@
 #### **Sec-PC (`10.0.50.51`)**
 * **Web:**
   ```bash
-  ansible all -i 10.0.50.51, -m raw -a "C:\Users\LabUser1\user_behavior_generation\worker\browser_task.bat [https://www.stackoverflow.com](https://www.stackoverflow.com) generic 60"
+  ansible all -i 10.0.50.51, -m raw -a "C:\Users\LabUser1\user_behavior_generation\worker\browser_task.bat 'https://www.stackoverflow.com' generic 60"
   ```
 * **PDF:**
   ```bash
