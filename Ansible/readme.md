@@ -33,7 +33,7 @@
 #### **CL1-Windows (10.0.10.53)**
 * **Web (Google):**
   ```bash
-  ansible all -i 10.0.10.53, -m raw -a "C:\Users\Student\user_behavior_generation\worker\browser_task_student_and_lab.bat https://www.google.com generic 60" -u Student -e "ansible_shell_type=cmd ansible_connection=ssh"
+  ansible all -i 10.0.10.53, -m raw -a "C:\Users\Student\user_behavior_generation\worker\browser_task.bat https://www.google.com generic 60" -u Student -e "ansible_shell_type=cmd ansible_connection=ssh"
   ```
 * **PDF:**
   ```bash
@@ -77,29 +77,29 @@
 #### **Sec-PC (`10.0.40.51`)**
 * **Web:**
   ```bash
-  ansible all -i 10.0.40.51, -m raw -a "C:\Users\User\user_behavior_generation\worker\browser_task.bat 'https://www.unisa.it' generic 60"
+  ansible all -i 10.0.40.51, -m raw -a "C:\Users\User\user_behavior_generation\worker\browser_task.bat 'https://www.unisa.it' generic 60" -u User -e "ansible_shell_type=cmd ansible_connection=ssh"
   ```
 * **PDF:**
   ```bash
-  ansible all -i 10.0.40.51, -m raw -a "C:\Users\User\user_behavior_generation\worker\browser_task.bat C:\Users\User\user_behavior_generation\worker\examhall.pdf pdf 60"
+  ansible all -i 10.0.40.51, -m raw -a "C:\Users\User\user_behavior_generation\worker\browser_task.bat C:\Users\User\user_behavior_generation\worker\examhall.pdf pdf 60" -u User -e "ansible_shell_type=cmd ansible_connection=ssh"
   ```
 * **Mail:**
   ```bash
-  ansible all -i 10.0.40.51, -m raw -a "C:\Users\User\user_behavior_generation\worker\browser_task.bat gmail mail 60"
+  ansible all -i 10.0.40.51, -m raw -a "C:\Users\User\user_behavior_generation\worker\browser_task.bat gmail mail 60" -u User -e "ansible_shell_type=cmd ansible_connection=ssh"
   ```
 * **Print:**
   ```bash
-  ansible all -i 10.0.40.51, -m raw -a "C:\Users\User\user_behavior_generation\worker\browser_task.bat C:\Users\User\user_behavior_generation\worker\BDD.pdf print 60"
+  ansible all -i 10.0.40.51, -m raw -a "C:\Users\User\user_behavior_generation\worker\browser_task.bat C:\Users\User\user_behavior_generation\worker\BDD.pdf print 60" -u User -e "ansible_shell_type=cmd ansible_connection=ssh"
   ```
 
 ### Lab
 
-#### **Sec-PC (`10.0.50.51`)**
+#### **Lab-Win1 (`10.0.50.51`)**
 * **Web:**
   ```bash
-  ansible all -i 10.0.50.51, -m raw -a "C:\Users\LabUser1\user_behavior_generation\worker\browser_task.bat 'https://www.stackoverflow.com' generic 60"
+  ansible all -i 10.0.50.51, -m raw -a "C:\Users\LabUser1\user_behavior_generation\worker\browser_task.bat 'https://www.stackoverflow.com' generic 60" -u LabUser1 -e "ansible_shell_type=cmd ansible_connection=ssh"
   ```
 * **PDF:**
   ```bash
-  ansible all -i 10.0.50.51, -m raw -a "C:\Users\LabUser1\user_behavior_generation\worker\browser_task.bat C:\Users\LabUser1\user_behavior_generation\worker\expert.pdf pdf 60"
+  ansible all -i 10.0.50.51, -m raw -a "C:\Users\LabUser1\user_behavior_generation\worker\browser_task.bat C:\Users\LabUser1\user_behavior_generation\worker\expert.pdf pdf 60" -u LabUser1 -e "ansible_shell_type=cmd ansible_connection=ssh"
   ```
