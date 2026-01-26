@@ -1,0 +1,64 @@
+{
+    "IT": [
+        {
+            "url": "https://www.google.com",
+            "type": "generic",
+            "state": "ACTIVE"
+        },
+        {
+            "url": "https://it.wikipedia.org/wiki/Pagina_principale",
+            "type": "generic",
+            "state": "ACTIVE"
+        },
+        {
+            "url": "https://it.wikibooks.org/wiki/Pagina_principale",
+            "type": "generic",
+            "state": "ACTIVE"
+        },
+        {
+            "url": "https://docs.python.org/3/",
+            "type": "generic",
+            "state": "ACTIVE"
+        },
+        {
+            "url": "https://stackoverflow.com/questions",
+            "type": "generic",
+            "state": "ACTIVE"
+        },
+        {
+            "url": "https://news.ycombinator.com",
+            "type": "generic",
+            "state": "ACTIVE"
+        },
+        {
+            "url": "https://www.w3schools.com",
+            "type": "generic",
+            "state": "ACTIVE"
+        },
+        {
+            "url": "https://www.debian.org",
+            "type": "generic",
+            "state": "ACTIVE"
+        },
+        {
+            "url": "https://www.gnu.org",
+            "type": "generic",
+            "state": "ACTIVE"
+        },
+        {
+            "url": "https://archive.org",
+            "type": "generic",
+            "state": "ACTIVE"
+        },
+        {
+            "url": "https://devdocs.io",
+            "type": "generic",
+            "state": "ACTIVE"
+        },
+        {
+            "url": "https://www.unisa.it",
+            "type": "generic",
+            "state": "ACTIVE"
+        }
+    ]
+}
