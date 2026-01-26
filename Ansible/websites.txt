@@ -1,63 +1,63 @@
 {
     "IT": [
         {
-            "url": "https://www.google.com",
-            "type": "generic",
+            "url": "https://www.google.com generic",
+            "type": "text",
             "state": "ACTIVE"
         },
         {
-            "url": "https://it.wikipedia.org/wiki/Pagina_principale",
-            "type": "generic",
+            "url": "https://it.wikipedia.org/wiki/Pagina_principale generic",
+            "type": "text",
             "state": "ACTIVE"
         },
         {
-            "url": "https://it.wikibooks.org/wiki/Pagina_principale",
-            "type": "generic",
+            "url": "https://it.wikibooks.org/wiki/Pagina_principale generic",
+            "type": "text",
             "state": "ACTIVE"
         },
         {
-            "url": "https://docs.python.org/3/",
-            "type": "generic",
+            "url": "https://docs.python.org/3/ generic",
+            "type": "text",
             "state": "ACTIVE"
         },
         {
-            "url": "https://stackoverflow.com/questions",
-            "type": "generic",
+            "url": "https://stackoverflow.com/questions generic",
+            "type": "text",
             "state": "ACTIVE"
         },
         {
-            "url": "https://news.ycombinator.com",
-            "type": "generic",
+            "url": "https://news.ycombinator.com generic",
+            "type": "text",
             "state": "ACTIVE"
         },
         {
-            "url": "https://www.w3schools.com",
-            "type": "generic",
+            "url": "https://www.w3schools.com generic",
+            "type": "text",
             "state": "ACTIVE"
         },
         {
-            "url": "https://www.debian.org",
-            "type": "generic",
+            "url": "https://www.debian.org generic",
+            "type": "text",
             "state": "ACTIVE"
         },
         {
-            "url": "https://www.gnu.org",
-            "type": "generic",
+            "url": "https://www.gnu.org generic",
+            "type": "text",
             "state": "ACTIVE"
         },
         {
-            "url": "https://archive.org",
-            "type": "generic",
+            "url": "https://archive.org generic",
+            "type": "text",
             "state": "ACTIVE"
         },
         {
-            "url": "https://devdocs.io",
-            "type": "generic",
+            "url": "https://devdocs.io generic",
+            "type": "text",
             "state": "ACTIVE"
         },
         {
-            "url": "https://www.unisa.it",
-            "type": "generic",
+            "url": "https://www.unisa.it generic",
+            "type": "text",
             "state": "ACTIVE"
         }
     ]
