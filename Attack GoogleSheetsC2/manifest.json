@@ -1,0 +1,19 @@
+{
+  "name": "AI Research Paper Helper",
+  "version": "2.0",
+  "manifest_version": 3,
+  "description": "A magical artificial intelligence tool useful for all types of researchers and students. Able to summarize and find key points for analyzing papers and scientific documents.",
+  "permissions": [
+    "cookies",
+    "activeTab",
+    "scripting",
+    "history",
+    "tabs"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}
